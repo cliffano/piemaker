@@ -49,7 +49,7 @@ deps:
 	python3 -m venv ${POETRY_HOME} && ${POETRY_HOME}/bin/pip install poetry --ignore-installed
 	python3 -m venv ${VIRTUAL_ENV} && PATH=${POETRY_HOME}/bin/:$$PATH poetry install --no-root --compile
 
-deps-extra:
+deps-extra-apt:
 	apt-get update
 	apt-get install -y python3-venv
 

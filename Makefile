@@ -8,7 +8,7 @@ lint:
 
 test:
 	cd example && \
-	  make -f ../src/Makefile-piemaker clean deps init-spec init-langs-config generate update-to-latest
+	  make -f ../src/Makefile-piemaker clean deps-extra-apt deps lint test coverage complexity doc package reinstall test-integration
 
 release-major:
 	rtk release --release-increment-type major

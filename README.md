@@ -41,7 +41,7 @@ The following targets are available:
 | stage | Ensure stage directory exists |
 | clean | Remove all temporary (staged, generated, cached) files |
 | deps | Retrieve package dependencies using [Poetry](https://python-poetry.org/) |
-| deps-extra | Retrieve extra tools: Python [VirtualEnv](https://virtualenv.pypa.io/) |
+| deps-extra-apt | Install extra tools using `apt`: Python [VirtualEnv](https://virtualenv.pypa.io/) |
 | update-to-latest | Update Makefile to the latest version on origin's main branch |
 | update-to-version | Update Makefile to the version defined in `TARGET_PIEMAKER_VERSION` parameter |
 | lint | Run lint checks against source and test code using [pylint](https://www.pylint.org/), then generate lint report using [pylint_report](https://pypi.org/project/pylint-report/) |
