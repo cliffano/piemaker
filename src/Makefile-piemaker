@@ -1,9 +1,9 @@
 ################################################################
-# PieMaker: A Makefile for generating API clients using OpenAPI Generator
+# PieMaker: Makefile for building Python packages
 # https://github.com/cliffano/piemaker
 ################################################################
 
-# The version of PieMaker
+# PieMaker's version number
 PIEMAKER_VERSION = 0.9.0-pre.0
 
 ################################################################
@@ -40,11 +40,11 @@ ci: clean deps lint test coverage complexity doc package reinstall test-integrat
 stage:
 	mkdir -p stage
 
-# Remove all generated API clients code
+# Remove all temporary (staged, generated, cached) files
 clean:
 	rm -rf stage *.lock *.egg-info build dist docs/ $(PACKAGE_NAME)/_pycache_/ $(PACKAGE_NAME)/*.pyc tests/_pycache_/ tests/*.pyc .coverage ~/.wily/ .pytest_cache/ .tox/ .mypy_cache/ .coverage.*
 
-# Retrieve the dependencies
+# Retrieve the Pyhon package dependencies
 deps:
 	python3 -m venv ${POETRY_HOME} && ${POETRY_HOME}/bin/pip install poetry --ignore-installed
 	python3 -m venv ${VIRTUAL_ENV} && PATH=${POETRY_HOME}/bin/:$$PATH poetry install --no-root --compile
@@ -66,8 +66,8 @@ update-to-version:
 
 lint: stage
 	mkdir -p docs/lint/pylint/ docs/lint/pylint/
-	pylint $(PACKAGE_NAME)/*.py $(PACKAGE_NAME)/models/*.py tests/*.py tests/models/*.py tests-integration/*.py
-	pylint $(PACKAGE_NAME)/*.py $(PACKAGE_NAME)/models/*.py tests/*.py tests/models/*.py tests-integration/*.py --output-format=pylint_report.CustomJsonReporter > docs/lint/pylint/report.json
+	pylint $(PACKAGE_NAME)/*.py $(PACKAGE_NAME)/*/*.py tests/*.py tests/*/*.py tests-integration/*.py
+	pylint $(PACKAGE_NAME)/*.py $(PACKAGE_NAME)/*/*.py tests/*.py tests/*/*.py tests-integration/*.py --output-format=pylint_report.CustomJsonReporter > docs/lint/pylint/report.json
 	pylint_report docs/lint/pylint/report.json -o docs/lint/pylint/index.html
 
 complexity: stage
@@ -86,7 +86,7 @@ test:
 test-integration:
 	rm -rf docs/test-integration/pytest/ && mkdir -p docs/test-integration/pytest/
 	pytest -v tests-integration --html=docs/test-integration/pytest/index.html --self-contained-html --capture=no
-	cd examples/ && ./$(PACKAGE_NAME)-cli.sh
+	cd examples/ && ./$(PACKAGE_NAME).sh
 
 coverage:
 	rm -rf docs/coverage/coverage/ && mkdir -p docs/coverage/coverage/
@@ -108,7 +108,10 @@ release-patch:
 	rtk release --release-increment-type patch
 
 ################################################################
-# Package and publishing targets
+# Packaging, installation, and publishing targets
+
+package:
+	poetry build
 
 install: package
 	poetry install
@@ -118,10 +121,7 @@ uninstall:
 
 reinstall:
 	make uninstall || echo "Nothing to uninstall..."
-	make package install
-
-package:
-	poetry build
+	make install
 
 publish:
 	poetry publish --username __token__ --password $(PASSWORD)
