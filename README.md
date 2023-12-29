@@ -15,8 +15,8 @@ Have a look at [Awstaga](http://github.com/cliffano/awstaga) as an example proje
 Installation
 ------------
 
-1. Copy `src/Makefile-piemaker` to be the `Makefile` of your project:
-    curl https://raw.githubusercontent.com/cliffano/piemaker/main/src/Makefile-piemaker -o Makefile
+1. Download `src/Makefile-piemaker` as the `Makefile` of your project:
+    `curl https://raw.githubusercontent.com/cliffano/piemaker/main/src/Makefile-piemaker -o Makefile`
 2. Create configuration file `piemaker.yml` with properties described in [Configuration](#configuration) section
 3. Run the available `Makefile` targets described in [Usage](#usage) section
 
@@ -48,7 +48,7 @@ The following targets are available:
 | complexity | Run complexity checks against source and test code using [wily](https://wily.readthedocs.io/), then generate complexity report |
 | test | Run unit testing using [pytest](https://pytest.org), then generate test report |
 | test-integration | Run integration testing using [pytest](https://pytest.org), then generate test report |
-| coverage | Run coverage checks using [Coverage.py]https://github.com/nedbat/coveragepy), then generate coverage report |
+| coverage | Run coverage checks using [Coverage.py](https://github.com/nedbat/coveragepy), then generate coverage report |
 | release-major | Create a major release using [rtk](https://github.com/cliffano/rtk) |
 | release-minor | Create a minor release using [rtk](https://github.com/cliffano/rtk) |
 | release-patch | Create a patch release using [rtk](https://github.com/cliffano/rtk) |
