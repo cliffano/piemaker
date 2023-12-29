@@ -66,8 +66,8 @@ update-to-version:
 
 lint: stage
 	mkdir -p docs/lint/pylint/ docs/lint/pylint/
-	pylint $(PACKAGE_NAME)/*.py $(PACKAGE_NAME)/*/*.py tests/*.py tests/*/*.py tests-integration/*.py
-	pylint $(PACKAGE_NAME)/*.py $(PACKAGE_NAME)/*/*.py tests/*.py tests/*/*.py tests-integration/*.py --output-format=pylint_report.CustomJsonReporter > docs/lint/pylint/report.json
+	pylint $(shell find $(PACKAGE_NAME) -type f -regex ".*\.py" | xargs echo) $(shell find tests/ -type f -regex ".*\.py" | xargs echo) $(shell find tests-integration/ -type f -regex ".*\.py" | xargs echo)
+	pylint $(shell find $(PACKAGE_NAME) -type f -regex ".*\.py" | xargs echo) $(shell find tests/ -type f -regex ".*\.py" | xargs echo) $(shell find tests-integration/ -type f -regex ".*\.py" | xargs echo) --output-format=pylint_report.CustomJsonReporter > docs/lint/pylint/report.json
 	pylint_report docs/lint/pylint/report.json -o docs/lint/pylint/index.html
 
 complexity: stage
@@ -84,7 +84,9 @@ test:
 test-integration:
 	rm -rf docs/test-integration/pytest/ && mkdir -p docs/test-integration/pytest/
 	pytest -v tests-integration --html=docs/test-integration/pytest/index.html --self-contained-html --capture=no
-	cd examples/ && ./$(PACKAGE_NAME).sh
+	for f in examples/*.sh; do \
+	  bash "$$f"; \
+	done
 
 coverage:
 	rm -rf docs/coverage/coverage/ && mkdir -p docs/coverage/coverage/
@@ -115,11 +117,9 @@ install: package
 	poetry install
 
 uninstall:
-	pip3 uninstall $(PACKAGE_NAME) -y
+	pip3 uninstall $(PACKAGE_NAME) -y || echo "Nothing to uninstall..."
 
-reinstall:
-	make uninstall || echo "Nothing to uninstall..."
-	make install
+reinstall: uninstall install
 
 publish:
 	poetry publish --username __token__ --password $(PASSWORD)
