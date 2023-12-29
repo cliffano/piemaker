@@ -1,0 +1,11 @@
+{
+  "resources": [
+    {
+      "path": "pyproject.toml",
+      "type": "toml",
+      "params": {
+        "property": "tool.poetry.version"
+      }
+    }
+  ]
+}

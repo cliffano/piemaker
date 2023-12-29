@@ -1,13 +1,14 @@
 ci: clean lint test
 
 clean:
-	rm -rf example/clients/ rm -rf example/stage/
+	cd examples && \
+	  make -f ../src/Makefile-piemaker clean
 
 lint:
 	checkmake src/Makefile-piemaker
 
 test:
-	cd example && \
+	cd examples && \
 	  make -f ../src/Makefile-piemaker clean deps-extra-apt deps lint test coverage complexity doc package reinstall test-integration
 
 release-major:
