@@ -7,10 +7,9 @@ PieMaker
 --------
 
 PieMaker is a Makefile for building Python packages.
-
 It provides utility targets for linting, building, testing, documenting Python packages.
 
-Have a look at [Awstaga](http://github.com/cliffano/awstaga) as an example project which uses PieMaker.
+Have a look at [PieMakerExample](examples/) as an example project which uses PieMaker.
 
 Installation
 ------------
