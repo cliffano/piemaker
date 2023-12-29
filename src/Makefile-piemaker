@@ -138,4 +138,4 @@ doc: stage
 
 ################################################################
 
-.PHONY: all ci clean stage deps deps-extra doc release lint complexity test test-integration coverage install uninstall reinstall package publish
+.PHONY: all ci clean stage deps deps-extra doc release lint complexity test test-integration test-examples coverage install uninstall reinstall package publish
