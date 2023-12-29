@@ -34,7 +34,7 @@ export PATH := ${VIRTUAL_ENV}/bin:${POETRY_HOME}/bin:$(PATH)
 # Base targets
 
 # CI target to be executed by CI/CD tool
-ci: clean deps lint test coverage complexity doc package reinstall test-integration
+ci: clean deps lint test coverage complexity doc package reinstall test-integration test-examples
 
 # Ensure stage directory exists
 stage:
@@ -84,6 +84,8 @@ test:
 test-integration:
 	rm -rf docs/test-integration/pytest/ && mkdir -p docs/test-integration/pytest/
 	pytest -v tests-integration --html=docs/test-integration/pytest/index.html --self-contained-html --capture=no
+
+test-examples:
 	for f in examples/*.sh; do \
 	  bash "$$f"; \
 	done

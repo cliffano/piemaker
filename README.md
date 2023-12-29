@@ -48,6 +48,7 @@ The following targets are available:
 | complexity | Run complexity checks against source and test code using [wily](https://wily.readthedocs.io/), then generate complexity report |
 | test | Run unit testing using [pytest](https://pytest.org), then generate test report |
 | test-integration | Run integration testing using [pytest](https://pytest.org), then generate test report |
+| test-examples | Run example scripts under `examples/` directory |
 | coverage | Run coverage checks using [Coverage.py](https://github.com/nedbat/coveragepy), then generate coverage report |
 | release-major | Create a major release using [rtk](https://github.com/cliffano/rtk) |
 | release-minor | Create a minor release using [rtk](https://github.com/cliffano/rtk) |
