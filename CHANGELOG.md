@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+- Add staging folder for each Makefile target
+
 ## 1.0.0 - 2023-12-29
 ### Added
 - Initial version
