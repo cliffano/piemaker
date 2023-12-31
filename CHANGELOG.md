@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Add staging folder for each Makefile target
 
+### Changed
+- Complexity now expects poetry.lock to be present
+
 ## 1.0.0 - 2023-12-29
 ### Added
 - Initial version

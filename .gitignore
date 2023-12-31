@@ -2,7 +2,6 @@ examples/.coverage
 examples/dist/
 examples/docs/
 examples/piemakerexample/__pycache__/
-examples/poetry.lock
 examples/tests/__pycache__/
 
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,macos
