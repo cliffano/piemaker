@@ -7,8 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
-### Changed
-- Generated coverage report should no longer include a .gitignore file
+### Fixed
+- Fix missing coverage report by excluding .gitignore file
 
 ## 1.1.0 - 2023-12-31
 ### Added
