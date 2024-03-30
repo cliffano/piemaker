@@ -1,3 +1,3 @@
 #!/bin/bash
 
-piemakerexample
+piemakerexample --help

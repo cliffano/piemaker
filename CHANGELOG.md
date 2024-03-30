@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Fixed
+- Fix test-examples to run from within examples/ directory
+
 ## 1.2.0 - 2024-03-29
 ### Added
 - Add deps-upgrade Makefile target
