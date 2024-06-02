@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Add install-wheel Makefile target
 
+### Changed
+- Switch release workflow steps to use release-action
+
 ## 1.2.1 - 2024-03-30
 ### Fixed
 - Fix test-examples to run from within examples/ directory
