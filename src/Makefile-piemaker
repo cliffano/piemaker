@@ -123,6 +123,10 @@ package:
 install: package
 	poetry install
 
+install-wheel: package
+	pip3 install dist/*.whl
+	pip3 install dist/$(PACKAGE_NAME)-$(PACKAGE_VERSION)-py3-none-any.whl
+
 uninstall:
 	pip3 uninstall $(PACKAGE_NAME) -y || echo "Nothing to uninstall..."
 
@@ -143,4 +147,4 @@ doc: stage
 
 ################################################################
 
-.PHONY: all ci clean stage deps deps-upgrade deps-extra doc release lint complexity test test-integration test-examples coverage install uninstall reinstall package publish
+.PHONY: all ci clean stage deps deps-upgrade deps-extra doc release lint complexity test test-integration test-examples coverage install install-wheel uninstall reinstall package publish
