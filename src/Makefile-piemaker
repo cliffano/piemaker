@@ -124,8 +124,7 @@ install: package
 	poetry install
 
 install-wheel: package
-	pip3 install dist/*.whl
-	pip3 install dist/$(PACKAGE_NAME)-$(PACKAGE_VERSION)-py3-none-any.whl
+	pip3 install dist/$(PACKAGE_NAME)-*.whl
 
 uninstall:
 	pip3 uninstall $(PACKAGE_NAME) -y || echo "Nothing to uninstall..."
