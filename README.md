@@ -59,3 +59,10 @@ The following targets are available:
 | reinstall | Uninstall, rebuild, and then install the package again |
 | publish | Publish package to PyPi using [Poetry](https://python-poetry.org/) |
 | doc | Generate package documentation using [Sphinx](https://www.sphinx-doc.org/) |
+
+Colophon
+--------
+
+Related Projects:
+
+* [generator-python](https://github.com/cliffano/generator-python) - Python projects generator using Plop
