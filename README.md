@@ -54,7 +54,7 @@ The following targets are available:
 | release-minor | Create a minor release using [rtk](https://github.com/cliffano/rtk) |
 | release-patch | Create a patch release using [rtk](https://github.com/cliffano/rtk) |
 | package | Build the Python package using [Poetry](https://python-poetry.org/) |
-| install | Install the built package using [Poetry](https://python-poetry.org/) |
+| install | Install the built package using [Poetry](https://python-poetry.org/). For CLI, the binary is available at `/opt/poetry-venv/bin/` |
 | uninstall | Uninstall the package using [Pip](https://pypi.org/project/pip/) |
 | reinstall | Uninstall, rebuild, and then install the package again |
 | publish | Publish package to PyPi using [Poetry](https://python-poetry.org/) |
