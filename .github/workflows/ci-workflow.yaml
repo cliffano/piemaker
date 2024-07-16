@@ -6,4 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ./.github/actions/ci-action
+      - uses: cliffano/command-docker-action@main
+        with:
+          command: 'make ci'
+          image: cliffano/studio
+          shell: bash
