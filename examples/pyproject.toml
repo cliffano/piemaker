@@ -29,20 +29,22 @@ include = "piemakerexample"
 piemakerexample = "piemakerexample:cli"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.10"
 click = "^8.1.7"
 
 [tool.poetry.group.dev.dependencies]
-twine = "4.0.2"
-wheel = "0.40.0"
+black = "^24.10.0"
+twine = "^5.1.1"
+wheel = "^0.44.0"
 
 [tool.poetry.group.test.dependencies]
-coverage = "7.2.4"
-pylint = "3.0.1"
-pytest = "7.3.1"
-wily = "1.24.0"
+coverage = "^7.6.4"
+numpy = "1.26.4" # https://stackoverflow.com/questions/78634235/numpy-dtype-size-changed-may-indicate-binary-incompatibility-expected-96-from
+pylint = "^3.3.1"
+pytest = "^8.3.3"
+wily = "^1.25.0"
 
 [tool.poetry.group.doc.dependencies]
-pylint-report = "2.4.0"
-pytest-html = "3.2.0"
-Sphinx = "6.2.1"
+pylint-report = "^2.4.0"
+pytest-html = "^4.1.1"
+Sphinx = "^8.1.3"
