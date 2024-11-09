@@ -7,13 +7,14 @@ Example Python package for PieMaker
 
 import click
 
+
 def hello() -> None:
     """Say hello."""
 
-    print('Hellooo')
+    print("Hellooo")
+
 
 @click.command()
 def cli() -> None:
-    """Python CLI example.
-    """
+    """Python CLI example."""
     hello()

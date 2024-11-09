@@ -4,12 +4,11 @@ import unittest.mock
 import unittest
 from piemakerexample import hello
 
+
 class TestPieMakerExample(unittest.TestCase):
 
-    @patch('builtins.print')
-    def test_hello( # pylint: disable=too-many-arguments
-            self,
-            func_print):
+    @patch("builtins.print")
+    def test_hello(self, func_print):  # pylint: disable=too-many-arguments
 
         hello()
-        assert func_print.mock_calls == [call('Hellooo')]
+        assert func_print.mock_calls == [call("Hellooo")]
