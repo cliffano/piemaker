@@ -44,8 +44,9 @@ The following targets are available:
 | deps-extra-apt | Install extra tools using `apt`: Python [VirtualEnv](https://virtualenv.pypa.io/) |
 | update-to-latest | Update Makefile to the latest version on origin's main branch |
 | update-to-version | Update Makefile to the version defined in `TARGET_PIEMAKER_VERSION` parameter |
+| style | Run code styling against source and test code using [black](https://black.readthedocs.io/en/stable/) |
 | lint | Run lint checks against source and test code using [pylint](https://www.pylint.org/), then generate lint report using [pylint_report](https://pypi.org/project/pylint-report/) |
-| complexity | Run complexity checks against source and test code using [wily](https://wily.readthedocs.io/), then generate complexity report |
+| complexity | Run complexity checks against source and test code using [flake8-cognitive-complexity](https://github.com/Melevir/flake8-cognitive-complexity), then generate complexity report |
 | test | Run unit testing using [pytest](https://pytest.org), then generate test report |
 | test-integration | Run integration testing using [pytest](https://pytest.org), then generate test report |
 | test-examples | Run example scripts under `examples/` directory |

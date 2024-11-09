@@ -9,7 +9,7 @@ lint:
 
 test:
 	cd examples && \
-	  make -f ../src/Makefile-piemaker clean deps-extra-apt deps deps-upgrade deps lint test coverage complexity doc package reinstall test-integration install-wheel test-examples
+	  make -f ../src/Makefile-piemaker clean deps-extra-apt deps deps-upgrade deps style lint test coverage complexity doc package reinstall test-integration install-wheel test-examples
 
 release-major:
 	rtk release --release-increment-type major
