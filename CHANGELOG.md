@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+- Add tests-integration and examples folders to style target
+
 ## 1.4.0 - 2024-11-09
 ### Added
 - Add style target using black
