@@ -61,7 +61,7 @@ deps-extra-apt:
 update-to-latest: TARGET_PIEMAKER_VERSION = $(shell curl -s https://api.github.com/repos/cliffano/piemaker/tags | jq -r '.[0].name')
 update-to-latest: update-to-version
 
-# Update Makefile to the origin's main branch
+# Update Makefile to the main branch
 update-to-main:
 	curl https://raw.githubusercontent.com/cliffano/piemaker/main/src/Makefile-piemaker -o Makefile
 
