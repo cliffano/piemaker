@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+- Add -x flag to test-examples target's bash calls
+
 ## 1.5.0 - 2024-11-23
 ### Added
 - Add tests-integration and examples folders to style target

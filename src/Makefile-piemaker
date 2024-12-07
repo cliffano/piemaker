@@ -98,7 +98,7 @@ test-integration:
 test-examples:
 	cd examples && \
 	for f in *.sh; do \
-	  bash "$$f"; \
+	  bash -x "$$f"; \
 	done
 
 coverage:
