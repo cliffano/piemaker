@@ -22,4 +22,4 @@ release-patch:
 
 release: release-minor
 
-.PHONY: all ci clean lint test release-major release-minor release-patch
+.PHONY: ci clean lint release release-major release-minor release-patch test
