@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+- Add new update-to-latest which updates to latest version tag
+
+### Changed
+- Rename Makefile target update-to-latest to update-to-main
+
 ## 1.6.0 - 2024-12-07
 ### Added
 - Add -x flag to test-examples target's bash calls
