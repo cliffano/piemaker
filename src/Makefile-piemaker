@@ -34,6 +34,7 @@ export PATH := ${VIRTUAL_ENV}/bin:${POETRY_HOME}/bin:$(PATH)
 # Base targets
 
 # CI target to be executed by CI/CD tool
+all:ci
 ci: clean deps style lint test coverage complexity doc package reinstall test-integration
 
 # Ensure stage directory exists
@@ -156,4 +157,4 @@ doc: stage
 
 ################################################################
 
-.PHONY: ci clean complexity configurations coverage deps deps-extra-apt deps-upgrade doc export export export install install-wheel lint name package package publish reinstall release-major release-minor release-patch stage style test test-examples test-integration uninstall update-to-latest update-to-latest update-to-main update-to-version
+.PHONY: all ci clean complexity configurations coverage deps deps-extra-apt deps-upgrade doc export export export install install-wheel lint name package package publish reinstall release-major release-minor release-patch stage style test test-examples test-integration uninstall update-to-latest update-to-latest update-to-main update-to-version

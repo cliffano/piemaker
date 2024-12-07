@@ -1,3 +1,4 @@
+all: ci
 ci: clean lint test
 
 clean:
@@ -22,4 +23,4 @@ release-patch:
 
 release: release-minor
 
-.PHONY: ci clean lint release release-major release-minor release-patch test
+.PHONY: all ci clean lint release release-major release-minor release-patch test
