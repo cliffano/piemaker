@@ -10,7 +10,7 @@ lint:
 
 test:
 	cd examples && \
-	  make -f ../src/Makefile-piemaker clean deps-extra-apt deps deps-upgrade deps style lint test coverage complexity doc package reinstall test-integration install-wheel test-examples update-to-latest update-to-main && \
+	  make -f ../src/Makefile-piemaker deps-extra-apt ci test-examples update-to-latest update-to-main && \
 		make -f ../src/Makefile-piemaker update-to-version TARGET_PIEMAKER_VERSION=1.0.0
 
 release-major:
