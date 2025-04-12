@@ -7,7 +7,7 @@ PieMaker
 --------
 
 PieMaker is a Makefile for building Python packages.
-It provides utility targets for linting, building, testing, documenting Python packages.
+It provides utility targets for styling, linting, building, testing, and documenting Python packages.
 
 Have a look at [PieMakerExample](examples/) as an example project which uses PieMaker.
 
