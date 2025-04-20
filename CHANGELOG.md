@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Replace /opt/poetry-venv to .venv for VirtualEnv home
+- Change example min Python to 3.11
+- Upgrade deps
 
 ## 1.8.0 - 2025-01-06
 ### Changed
