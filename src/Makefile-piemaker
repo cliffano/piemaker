@@ -27,7 +27,7 @@ $(info - Package name: ${PACKAGE_NAME})
 $(info - Author: ${AUTHOR})
 
 export POETRY_HOME := /opt/poetry
-export VIRTUAL_ENV := /opt/poetry-venv
+export VIRTUAL_ENV := .venv
 export PATH := ${VIRTUAL_ENV}/bin:${POETRY_HOME}/bin:$(PATH)
 
 ################################################################

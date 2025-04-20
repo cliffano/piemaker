@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Changed
+- Replace /opt/poetry-venv to .venv for VirtualEnv home
+
 ## 1.8.0 - 2025-01-06
 ### Changed
 - Modify poetry and poetry-plugin-up to use explicit version due to incompatibility when installing plugin via poetry self add
