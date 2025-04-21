@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+- Add sphinx-build extra-dep for sphinx-apidoc
+
 ### Changed
 - Replace /opt/poetry-venv to .venv for VirtualEnv home
 - Change example min Python to 3.11

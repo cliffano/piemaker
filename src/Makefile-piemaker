@@ -57,6 +57,7 @@ deps-upgrade:
 deps-extra-apt:
 	apt-get update
 	apt-get install -y python3-venv
+	apt-get install -y python3-sphinx # needed by sphinx-apidoc
 
 # Update Makefile to the latest version tag
 update-to-latest: TARGET_PIEMAKER_VERSION = $(shell curl -s https://api.github.com/repos/cliffano/piemaker/tags | jq -r '.[0].name')
