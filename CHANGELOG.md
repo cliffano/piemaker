@@ -7,8 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+- Add rmdeps target
+- Add requirements.txt generation as part of deps target for Snyk scanning
+
 ### Changed
 - Change example min Python to 3.10
+- Upgrade Poetry to 2.1.3
+- Run all Python commands via venv
 
 ## 1.9.0 - 2025-04-21
 ### Added
