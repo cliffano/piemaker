@@ -5,6 +5,6 @@ set -o nounset
 cd ../
 . ./.venv/bin/activate
 
-echo "\n\n========================================"
-echo "Show help guide: piemakerexample --help"
+printf "\n\n========================================\n"
+printf "Show help guide: piemakerexample --help\n"
 piemakerexample --help
