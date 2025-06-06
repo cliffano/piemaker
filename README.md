@@ -42,6 +42,7 @@ The following targets are available:
 | deps | Retrieve package dependencies using [Poetry](https://python-poetry.org/) |
 | deps-upgrade | Upgrade package dependencies using [Poetry](https://python-poetry.org/) |
 | deps-extra-apt | Install extra tools using `apt`: Python [VirtualEnv](https://virtualenv.pypa.io/) |
+| rmdeps | Remove poetry.lock, requirements.txt, and .venv/ directory |
 | update-to-latest | Update Makefile to the latest version tag |
 | update-to-main | Update Makefile to the main branch |
 | update-to-version | Update Makefile to the version defined in `TARGET_PIEMAKER_VERSION` parameter |
