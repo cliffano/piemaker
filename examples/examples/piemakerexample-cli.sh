@@ -2,10 +2,9 @@
 set -o errexit
 set -o nounset
 
-# VirtualEnv activation is only needed due to this repo's example structure.
-# It's not needed on real PieMaker consumer projects.
 cd ../
 . ./.venv/bin/activate
+cd examples/
 
 printf "\n\n========================================\n"
 printf "Show help guide: piemakerexample --help\n"
