@@ -3,6 +3,7 @@ core
 examples/.coverage
 examples/dist/
 examples/docs/
+examples/Makefile
 examples/piemakerexample/__pycache__/
 examples/tests/__pycache__/
 # End of Studio gitignore
