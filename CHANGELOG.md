@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Changed
+- Change complexity tool to Radon to avoid silly Wily's insistance on clean repo state
+
 ## 1.11.0 - 2025-12-02
 ### Added
 - Ensure stage/test-examples/ subfolder as part of test-examples target
