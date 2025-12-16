@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Changed
+- Upgrade Poetry to 2.2.1
+
 ### Fixed
 - Fix complexity report to generate standard index.html
 
