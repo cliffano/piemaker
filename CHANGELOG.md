@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Fixed
+- Fix complexity report to generate standard index.html
+
 ## 1.12.0 - 2025-12-15
 ### Changed
 - Change complexity tool to Radon to avoid silly Wily's insistance on clean repo state

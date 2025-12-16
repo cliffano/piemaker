@@ -98,10 +98,9 @@ lint: stage
 
 complexity: stage
 	rm -rf docs/complexity/radon/ stage/complexity/ && mkdir -p docs/complexity/radon/ stage/complexity/
-	$(call python_venv,radon cc -s -a $(PACKAGE_NAME)/)
-	$(call python_venv,radon mi $(PACKAGE_NAME)/)
-	$(call python_venv,radon cc -s -a $(PACKAGE_NAME)/) > docs/complexity/radon/cc.txt
-	$(call python_venv,radon mi $(PACKAGE_NAME)/) > docs/complexity/radon/mi.txt
+	$(call python_venv,radon mi $(PACKAGE_NAME)/) 2>&1 | tee -a docs/complexity/radon/report.txt
+	$(call python_venv,radon cc -s -a $(PACKAGE_NAME)/) 2>&1 | tee -a docs/complexity/radon/report.txt
+	$(call python_venv,cat docs/complexity/radon/report.txt | ansi2html) > docs/complexity/radon/index.html
 
 test:
 	rm -rf docs/test/pytest/ stage/test/ && mkdir -p docs/test/pytest/ stage/test/
