@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Changed
+- Upgrade Poetry to 2.3.2
+
 ## 2.0.0 - 2025-12-16
 ### Added
 - Add deps-upgrade target to test run
