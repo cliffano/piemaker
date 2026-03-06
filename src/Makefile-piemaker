@@ -109,8 +109,7 @@ update-dotfiles: stage
 	  cp .coveragerc ../../../../.coveragerc && \
 	  cp .gitignore ../../../../.gitignore && \
 	  cp .pylintrc ../../../../.pylintrc && \
-	  cp .rtk.json ../../../../.rtk.json && \
-	  cp pyproject.toml ../../../../pyproject.toml
+	  cp .rtk.json ../../../../.rtk.json
 
 ################################################################
 # Formatting targets
