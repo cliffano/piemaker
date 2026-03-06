@@ -28,6 +28,14 @@ Create PieMaker configuration file called `piemaker.yml` with contains the follo
 |----------|-------------|---------|
 | package_name | The name of the Python package | `somepackage` |
 | author | The author of the package | `Some Author` |
+| generator.component | The generator component type from [generator-python](https://github.com/cliffano/generator-python) | `python-cli` |
+| generator.inputs.project_id | The project ID | `somepackage` |
+| generator.inputs.project_name | The project display name | `Some Package` |
+| generator.inputs.project_desc | The project description | `A sample Python CLI package` |
+| generator.inputs.author_name | The author's name | `Some Author` |
+| generator.inputs.author_email | The author's email address | `someauthor@example.com` |
+| generator.inputs.github_id | The GitHub user or organisation ID | `pakkunbot` |
+| generator.inputs.github_repo | The GitHub repository name | `piemakerexample` |
 
 Usage
 -----
@@ -46,6 +54,7 @@ The following targets are available:
 | update-to-latest | Update Makefile to the latest version tag |
 | update-to-main | Update Makefile to the main branch |
 | update-to-version | Update Makefile to the version defined in `TARGET_PIEMAKER_VERSION` parameter |
+| update-dotfile | Update the dotfiles with latest from [generator-python](https://github.com/cliffano/generator-python) |
 | style | Run code styling against source and test code using [black](https://black.readthedocs.io/en/stable/) |
 | lint | Run lint checks against source and test code using [pylint](https://www.pylint.org/), then generate lint report using [pylint_report](https://pypi.org/project/pylint-report/) |
 | complexity | Run complexity checks against source and test code using [Radon](https://radon.readthedocs.io/en/latest/), then generate complexity report |
