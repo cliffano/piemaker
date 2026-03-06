@@ -81,6 +81,28 @@ update-to-main:
 update-to-version:
 	curl https://raw.githubusercontent.com/cliffano/piemaker/$(TARGET_PIEMAKER_VERSION)/src/Makefile-piemaker -o Makefile
 
+# Update dotfiles using the generator-python
+update-dotfiles: stage
+	cd stage/ && \
+	  git clone https://github.com/cliffano/generator-python && \
+	  cd generator-python && \
+	  make deps && \
+	  node_modules/.bin/plop $(shell yq .generator.component piemaker.yml) -- \
+	    --project_id "$(shell yq .generator.inputs.project_id piemaker.yml)" \
+		--project_name "$(shell yq .generator.inputs.project_name piemaker.yml)" \
+		--project_desc "$(shell yq .generator.inputs.project_desc piemaker.yml)" \
+		--author_name "$(shell yq .generator.inputs.author_name piemaker.yml)" \
+		--author_email "$(shell yq .generator.inputs.author_email piemaker.yml)" \
+		--github_id "$(shell yq .generator.inputs.github_id piemaker.yml)" \
+		--github_repo "$(shell yq .generator.inputs.github_repo piemaker.yml)" && \
+	  cd stage/python-cli && \
+	  cp -R .github/ ../../../.github/ && \
+	  cp -R .coveragerc ../../../.coveragerc && \
+	  cp -R .gitignore ../../../.gitignore && \
+	  cp -R .pylintrc ../../../.pylintrc && \
+	  cp -R .rtk.json ../../../.rtk.json && \
+	  cp -R pyproject.toml ../../../pyproject.toml
+
 ################################################################
 # Formatting targets
 
