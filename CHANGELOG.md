@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Fixed
+- Fix GH dotfiles copying the whole folder
+
 ## 2.2.0 - 2026-03-06
 ### Added
 - Add update-dotfiles target

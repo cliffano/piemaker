@@ -105,7 +105,7 @@ update-dotfiles: stage
 		--github_id "$(GENERATOR_INPUTS_GITHUB_ID)" \
 		--github_repo "$(GENERATOR_INPUTS_GITHUB_REPO)"
 	cd stage/generator-python/stage/$(GENERATOR_COMPONENT) && \
-	  cp -R .github/ ../../../../.github/ && \
+	  cp -R .github/* ../../../../.github/ && \
 	  cp .coveragerc ../../../../.coveragerc && \
 	  cp .gitignore ../../../../.gitignore && \
 	  cp .pylintrc ../../../../.pylintrc && \
