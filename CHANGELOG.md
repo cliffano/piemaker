@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Fixed
+- Fix checkmake mistaking info banner as Makefile target
+
 ## 2.2.1 - 2026-03-07
 ### Fixed
 - Fix GH dotfiles copying the whole folder

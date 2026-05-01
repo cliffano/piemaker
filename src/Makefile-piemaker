@@ -22,9 +22,9 @@ PACKAGE_NAME=$(shell yq .package_name piemaker.yml)
 AUTHOR ?= $(shell yq .author piemaker.yml)
 
 $(info ################################################################)
-$(info Building Python package using PieMaker with user configurations:)
-$(info - Package name: ${PACKAGE_NAME})
-$(info - Author: ${AUTHOR})
+$(info Building Python package using PieMaker with user configurations...)
+$(info - Package name = ${PACKAGE_NAME})
+$(info - Author = ${AUTHOR})
 
 export POETRY_HOME := /opt/poetry
 export VIRTUAL_ENV := .venv
