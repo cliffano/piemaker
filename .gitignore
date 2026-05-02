@@ -1,12 +1,5 @@
 # Start of Studio gitignore
 core
-examples/.coverage
-examples/dist/
-examples/docs/
-examples/Makefile
-examples/piemakerexample/__pycache__/
-examples/stage/
-examples/tests/__pycache__/
 # End of Studio gitignore
 
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,macos,python
