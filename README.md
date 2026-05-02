@@ -1,26 +1,22 @@
-<img align="right" src="https://raw.github.com/cliffano/piemaker/master/avatar.jpg" alt="Avatar"/>
+![Avatar](avatar.jpg)
 
 [![Build Status](https://github.com/cliffano/piemaker/actions/workflows/ci-workflow.yaml/badge.svg)](https://github.com/cliffano/piemaker/actions/workflows/ci-workflow.yaml)
-<br/>
 
-PieMaker
---------
+# PieMaker
 
 PieMaker is a Makefile for building Python packages.
 It provides utility targets for styling, linting, building, testing, and documenting Python packages.
 
 Have a look at [PieMakerExample](examples/) as an example project which uses PieMaker.
 
-Installation
-------------
+## Installation
 
 1. Download `src/Makefile-piemaker` as the `Makefile` of your project:
     `curl https://raw.githubusercontent.com/cliffano/piemaker/main/src/Makefile-piemaker -o Makefile`
 2. Create configuration file `piemaker.yml` with properties described in [Configuration](#configuration) section
 3. Run the available `Makefile` targets described in [Usage](#usage) section
 
-Configuration
--------------
+## Configuration
 
 Create PieMaker configuration file called `piemaker.yml` with contains the following properties:
 
@@ -37,8 +33,7 @@ Create PieMaker configuration file called `piemaker.yml` with contains the follo
 | generator.inputs.github_id | The GitHub user or organisation ID | `pakkunbot` |
 | generator.inputs.github_repo | The GitHub repository name | `piemakerexample` |
 
-Usage
------
+## Usage
 
 The following targets are available:
 
@@ -72,8 +67,7 @@ The following targets are available:
 | publish | Publish package to PyPi using [Poetry](https://python-poetry.org/) |
 | doc | Generate package documentation using [Sphinx](https://www.sphinx-doc.org/) |
 
-Colophon
---------
+## Colophon
 
 Related Projects:
 
