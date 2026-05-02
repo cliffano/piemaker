@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Fix checkmake mistaking info banner as Makefile target
+- Fix regression of example version following full ci build
 
 ### Removed
 - Remove unused install-wheel target

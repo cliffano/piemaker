@@ -22,8 +22,9 @@ lint:
 test:
 	for component in $(COMPONENTS); do \
 	  (cd examples/$$component/ && \
-	    make -f ../../src/$(MAKEFILE_NAME) deps-extra-apt ci test-examples deps-upgrade update-dotfiles update-to-latest update-to-main && \
+	    make -f ../../src/$(MAKEFILE_NAME) deps-extra-apt ci test-examples deps-upgrade update-dotfiles update-to-main && \
 	    make -f ../../src/$(MAKEFILE_NAME) update-to-version $(TARGET_VERSION_VARIABLE)=1.0.0 &&\
+		make -f ../../src/$(MAKEFILE_NAME) update-to-latest &&\
 		cd ../../); \
 	done
 
