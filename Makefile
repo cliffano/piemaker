@@ -5,8 +5,13 @@ clean:
 	cd examples && \
 	  make -f ../src/Makefile-piemaker clean
 
+deps-extra-apt:
+	apt-get install -y markdownlint
+
 lint:
 	checkmake src/Makefile-piemaker
+	find ./ -type f -name "*.json" | while IFS= read -r file; do echo "> $$file"; python3 -m json.tool "$$file"; done
+	mdl -s .mdl-style.rb $(shell find . -path ./stage -prune -o -path ./examples/.venv -prune -o -name "*.md" -print)
 
 test:
 	cd examples && \

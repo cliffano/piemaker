@@ -6,14 +6,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+- Add JSON and Markdown lint
+- Add deps-extra-apt Makefile target
+
+### Changed
+- Update README format to be mdl compliant
+
 ### Fixed
 - Fix checkmake mistaking info banner as Makefile target
 
 ### Removed
 - Remove unused install-wheel target
-
-### Changed
-- Update README format to be mdl compliant
 
 ## 2.2.1 - 2026-03-07
 ### Fixed
