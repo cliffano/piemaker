@@ -54,7 +54,7 @@ The following targets are available:
 | update-to-latest | Update Makefile to the latest version tag |
 | update-to-main | Update Makefile to the main branch |
 | update-to-version | Update Makefile to the version defined in `TARGET_PIEMAKER_VERSION` parameter |
-| update-dotfile | Update the dotfiles with latest from [generator-python](https://github.com/cliffano/generator-python) |
+| update-dotfiles | Update the dotfiles with latest from [generator-python](https://github.com/cliffano/generator-python) |
 | style | Run code styling against source and test code using [black](https://black.readthedocs.io/en/stable/) |
 | lint | Run lint checks against source and test code using [pylint](https://www.pylint.org/), then generate lint report using [pylint_report](https://pypi.org/project/pylint-report/) |
 | complexity | Run complexity checks against source and test code using [Radon](https://radon.readthedocs.io/en/latest/), then generate complexity report |
