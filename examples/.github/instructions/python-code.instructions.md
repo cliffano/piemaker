@@ -16,6 +16,7 @@ make style  # Via PieMaker
 ```
 
 **Guidelines**:
+
 - Use double quotes for strings (Black default)
 - Don't manually format — `black` is authoritative
 - Line length: 88 characters max
@@ -29,6 +30,7 @@ make lint
 ```
 
 **Guidelines**:
+
 - Disable warnings only when justified: `# pylint: disable=missing-docstring`
 - Use specific codes, not blanket disables when the exemptions are only specific lines
 - Attempt to fix warning root causes before disabling
@@ -149,6 +151,7 @@ logger.debug("Debug message")
 ```
 
 **Guidelines**:
+
 - Use `%s` format placeholders, not f-strings, in logger calls
 - Pass variables as separate arguments: `logger.info("msg %s", var)` not `logger.info(f"msg {var}")`
 - f-strings are avoided within logger calls to prevent unnecessary string interpolation when the log level is higher than the message level

@@ -5,6 +5,7 @@ description: "Standard Python project conventions and tooling using PieMaker"
 # Python Project Standards
 
 This repository contains a Python project following a **unified standard** for tooling, build automation, and coding conventions. All projects share the same tooling stack and conventions to ensure consistency and maintainability. The key components of the standard include:
+
 - Build automation (PieMaker)
 - Project definition and dependency management (Poetry)
 - Code formatting (Black)
@@ -27,6 +28,7 @@ poetry add package_name          # Add to runtime deps
 poetry add --group dev pkg_name  # Add to dev deps
 make deps                        # Install all deps
 ```
+
 ### VirtualEnv
 
 - **Virtual environment**: `.venv/` (Poetry-managed)
@@ -34,7 +36,7 @@ make deps                        # Install all deps
 
 ### Project Structure
 
-```
+```text
 project/
 ├── <module>                  # Main package
 │   ├── __init__.py
@@ -111,9 +113,9 @@ make update-dotfiles   # Refresh project dotfiles using generator-python (git cl
 
 This project is designed to be developed in a consistent environment via Docker image `cliffano/studio`.
 
-You can run the container using: `docker run --rm --workdir /opt/workspace -v /var/run/docker.sock:/var/run/docker.sock -v ``pwd``:/opt/workspace -i -t cliffano/studio` and then run the build commands inside the container.
+You can run the container using: `docker run --rm --workdir /opt/workspace -v /var/run/docker.sock:/var/run/docker.sock -v $PWD:/opt/workspace -i -t cliffano/studio` and then run the build commands inside the container.
 
-Alternatively you can run the PieMaker Makefile targets via Docker container entrypoint, e.g. `docker run --rm --workdir /opt/workspace -v /var/run/docker.sock:/var/run/docker.sock -v ``pwd``:/opt/workspace -i -t cliffano/studio make ci`. 
+Alternatively you can run the PieMaker Makefile targets via Docker container entrypoint, e.g. `docker run --rm --workdir /opt/workspace -v /var/run/docker.sock:/var/run/docker.sock -v $PWD:/opt/workspace -i -t cliffano/studio make ci`.
 
 ## Code Style, Testing, and Detailed Guidance
 
@@ -136,13 +138,15 @@ This file keeps the high-level project defaults. Detailed implementation rules l
 
 - Documentation is generated with Sphinx via `make doc`
 - Generated outputs live under `docs/`
-- Common generated subdirectories under `docs/`:
-	- `doc/` for generated API documentation
-	- `coverage/` for coverage reports
-	- `complexity/` for complexity analysis reports
-	- `lint/` for lint reports
-	- `test/` for unit test reports
-	- `test-integration/` for integration test reports
+
+Common generated subdirectories under `docs/`:
+
+- `doc/` for generated API documentation
+- `coverage/` for coverage reports
+- `complexity/` for complexity analysis reports
+- `lint/` for lint reports
+- `test/` for unit test reports
+- `test-integration/` for integration test reports
 
 ## Continuous Integration Pipeline
 
@@ -168,31 +172,17 @@ After the code is merged, the CI pipeline will run as Github CI workflow.
 
 This repository defines the following workflows under `.github/workflows/`:
 
-- **CI** (`ci-workflow.yaml`)
-	- **Trigger**: `push`, `pull_request`, and manual `workflow_dispatch`.
-	- **Purpose**: Runs the full quality pipeline (`make ci`) across a Python version matrix (`3.10`, `3.12`, `3.14`), runs example tests, and publishes generated docs to GitHub Pages.
+- **CI** (`ci-workflow.yaml`): Trigger: `push`, `pull_request`, and manual `workflow_dispatch`. Purpose: Runs the full quality pipeline (`make ci`) across a Python version matrix (`3.10`, `3.12`, `3.14`), runs example tests, and publishes generated docs to GitHub Pages.
 
-- **CodeQL** (`codeql-analysis.yml`)
-	- **Trigger**: `push` to `main`, `pull_request` targeting `main`, and weekly scheduled run (`cron`).
-	- **Purpose**: Performs GitHub CodeQL static security analysis for Python and uploads code scanning results.
+- **CodeQL** (`codeql-analysis.yml`): Trigger: `push` to `main`, `pull_request` targeting `main`, and weekly scheduled run (`cron`). Purpose: Performs GitHub CodeQL static security analysis for Python and uploads code scanning results.
 
-- **Publish** (`publish-workflow.yaml`)
-	- **Trigger**: `push` of any Git tag.
-	- **Purpose**: Builds and installs the package, then publishes it using `make publish` with `PYPI_TOKEN` secret.
+- **Publish** (`publish-workflow.yaml`): Trigger: `push` of any Git tag. Purpose: Builds and installs the package, then publishes it using `make publish` with `PYPI_TOKEN` secret.
 
-- **Release Major** (`release-major-workflow.yaml`)
-	- **Trigger**: Manual `workflow_dispatch`.
-	- **Purpose**: Creates a major release via `cliffano/release-action` (`release_type: major`).
+- **Release Major** (`release-major-workflow.yaml`): Trigger: Manual `workflow_dispatch`. Purpose: Creates a major release via `cliffano/release-action` (`release_type: major`).
 
-- **Release Minor** (`release-minor-workflow.yaml`)
-	- **Trigger**: Manual `workflow_dispatch`.
-	- **Purpose**: Creates a minor release via `cliffano/release-action` (`release_type: minor`).
+- **Release Minor** (`release-minor-workflow.yaml`): Trigger: Manual `workflow_dispatch`. Purpose: Creates a minor release via `cliffano/release-action` (`release_type: minor`).
 
-- **Release Patch** (`release-patch-workflow.yaml`)
-	- **Trigger**: Manual `workflow_dispatch`.
-	- **Purpose**: Creates a patch release via `cliffano/release-action` (`release_type: patch`).
+- **Release Patch** (`release-patch-workflow.yaml`): Trigger: Manual `workflow_dispatch`. Purpose: Creates a patch release via `cliffano/release-action` (`release_type: patch`).
 
-- **Upgrade Deps** (`upgrade-deps-workflow.yaml`)
-	- **Trigger**: Manual `workflow_dispatch`.
-	- **Purpose**: Upgrades dependencies, runs the main validation/build targets, commits dependency updates, and pushes changes back to the current branch.
+- **Upgrade Deps** (`upgrade-deps-workflow.yaml`): Trigger: Manual `workflow_dispatch`. Purpose: Upgrades dependencies, runs the main validation/build targets, commits dependency updates, and pushes changes back to the current branch.
 

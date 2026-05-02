@@ -13,7 +13,8 @@ applyTo: "tests/**/*.py,tests-integration/**/*.py"
 
 **Purpose**: Test individual functions/methods in isolation
 
-**Scope**: 
+**Scope**:
+
 - No filesystem and network calls (mock them)
 - Faster execution
 - High code coverage
@@ -25,6 +26,7 @@ applyTo: "tests/**/*.py,tests-integration/**/*.py"
 **Purpose**: Test end-to-end flows with real or semi-real external systems
 
 **Scope**:
+
 - May use filesystem and network calls (with test fixtures or mocks if needed)
 - Slower execution
 - Broader coverage (fewer, larger tests)
@@ -33,7 +35,7 @@ applyTo: "tests/**/*.py,tests-integration/**/*.py"
 
 ### Test Files
 
-```
+```text
 tests/
   test_module1.py        # Tests for module1.py
   test_module2.py        # Tests for module2.py
@@ -157,7 +159,7 @@ with patch("mymodule.service.ExternalAPI") as mock_api_cls:
     mock_api = MagicMock()
     mock_api_cls.return_value = mock_api
     mock_api.execute.return_value = MagicMock(status="ok", data="result")
-    
+
     service = MyService({"url": "http://localhost:8080", "user": "u", "token": "t"})
     # Test code
 ```
@@ -233,7 +235,7 @@ def test_format_output_required_fields_only(self):
         "value": 42,
     }
     result = format_output(input_data)
-    
+
     assert result["name"] == "Item"
     assert result["status"] == "active"
     assert result["value"] == 42
@@ -249,17 +251,17 @@ def test_operation_success(self, mock_init, mock_api_cls):
     # Setup
     mock_logger = MagicMock()
     mock_init.return_value = mock_logger
-    
+
     mock_api = MagicMock()
     mock_api_cls.return_value = mock_api
     mock_result = MagicMock(status="success", value="result_data")
     mock_api.execute.return_value = mock_result
-    
+
     # Execute
     config = {"url": "http://localhost", "user": "user", "token": "token"}
     service = MyService(config)
     output = service.perform_operation({"input": "data"})
-    
+
     # Assert
     mock_logger.info.assert_called_once_with("Operation completed: %s", "result_data")
 ```
@@ -276,7 +278,7 @@ def test_cli_help():
     """Test CLI help output."""
     runner = CliRunner()
     result = runner.invoke(cli, ["--help"])
-    
+
     assert result.exit_code == 0
     assert "Usage:" in result.output
 ```
@@ -288,7 +290,7 @@ def test_constructor_with_missing_config(self):
     """Test service constructor with missing config file."""
     from cfgrw import CFGRW
     from mymodule.service import MyService
-    
+
     with pytest.raises(FileNotFoundError):
         config = CFGRW(conf_file="nonexistent.yaml").read(...)
         service = MyService(config)
