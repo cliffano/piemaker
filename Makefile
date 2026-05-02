@@ -1,4 +1,5 @@
 ID := piemaker
+COMPONENTS := python-lib
 MAKEFILE_NAME := Makefile-$(ID)
 TARGET_VERSION_VARIABLE := TARGET_$(shell echo $(ID) | tr '[:lower:]-' '[:upper:]_')_VERSION
 
@@ -6,8 +7,9 @@ all: ci
 ci: clean lint test
 
 clean:
-	cd examples && \
-	  make -f ../src/$(MAKEFILE_NAME) clean
+	for component in $(COMPONENTS); do \
+	  (cd examples/$$component/ && make -f ../../src/$(MAKEFILE_NAME) clean && cd ../../); \
+	done
 
 deps-extra-apt:
 	apt-get install -y markdownlint
@@ -18,9 +20,12 @@ lint:
 	mdl -s .mdl-style.rb $(shell find . -path ./stage -prune -o -path ./examples/.venv -prune -o -name "CHANGELOG.md" -prune -o -name "*.md" -print)
 
 test:
-	cd examples && \
-	  make -f ../src/$(MAKEFILE_NAME) deps-extra-apt ci test-examples deps-upgrade update-dotfiles update-to-latest update-to-main && \
-	  make -f ../src/$(MAKEFILE_NAME) update-to-version $(TARGET_VERSION_VARIABLE)=1.0.0
+	for component in $(COMPONENTS); do \
+	  (cd examples/$$component/ && \
+	    make -f ../../src/$(MAKEFILE_NAME) deps-extra-apt ci test-examples deps-upgrade update-dotfiles update-to-latest update-to-main && \
+	    make -f ../../src/$(MAKEFILE_NAME) update-to-version $(TARGET_VERSION_VARIABLE)=1.0.0 &&\
+		cd ../../); \
+	done
 
 release-major:
 	rtk release --release-increment-type major
