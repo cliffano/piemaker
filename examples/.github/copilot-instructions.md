@@ -185,4 +185,3 @@ This repository defines the following workflows under `.github/workflows/`:
 - **Release Patch** (`release-patch-workflow.yaml`): Trigger: Manual `workflow_dispatch`. Purpose: Creates a patch release via `cliffano/release-action` (`release_type: patch`).
 
 - **Upgrade Deps** (`upgrade-deps-workflow.yaml`): Trigger: Manual `workflow_dispatch`. Purpose: Upgrades dependencies, runs the main validation/build targets, commits dependency updates, and pushes changes back to the current branch.
-
