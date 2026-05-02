@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 - Remove unused install-wheel target
+- Remove stale Wily references now that it has been replaced by Radon
 
 ## 2.2.1 - 2026-03-07
 ### Fixed

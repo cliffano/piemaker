@@ -47,7 +47,7 @@ stage:
 
 # Remove all temporary (staged, generated, cached) files
 clean:
-	rm -rf stage/ *.lock *.egg-info build dist/ docs/ $(PACKAGE_NAME)/__pycache__/ $(PACKAGE_NAME)/*.pyc tests/__pycache__/ tests/*.pyc .coverage ~/.wily/ .pytest_cache/ .tox/ .mypy_cache/ .coverage.*
+	rm -rf stage/ *.lock *.egg-info build dist/ docs/ $(PACKAGE_NAME)/__pycache__/ $(PACKAGE_NAME)/*.pyc tests/__pycache__/ tests/*.pyc .coverage .pytest_cache/ .tox/ .mypy_cache/ .coverage.*
 
 # Retrieve the Pyhon package dependencies
 deps:
