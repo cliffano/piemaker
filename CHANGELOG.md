@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Fixed
+- Fix copilot instructions being missed out on update-dotfiles target
+
 ## 2.3.0 - 2026-05-02
 ### Added
 - Add JSON and Markdown lint
