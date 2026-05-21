@@ -101,7 +101,7 @@ pytest -k "batch" -v
 
 - Framework: `pytest`
 - No special fixtures needed (use `unittest.TestCase` directly)
-- Plugins: `pytest-cov` for coverage
+- Coverage: `pytest-cov` (via `make coverage`)
 
 ## Mocking Best Practices
 

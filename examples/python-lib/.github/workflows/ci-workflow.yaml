@@ -11,7 +11,7 @@ jobs:
         python: [ '3.10', '3.12', '3.14' ]
     name: python ${{ matrix.python }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           set-safe-directory: ${{ github.workspace }}
       - uses: actions/setup-python@v6
@@ -22,5 +22,5 @@ jobs:
       - run: make test-examples || echo "Examples test exits with error"
       - uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.STUDIO_GITHUB_TOKEN }}
+          github_token: ${{ secrets.null_GITHUB_TOKEN }}
           publish_dir: docs
