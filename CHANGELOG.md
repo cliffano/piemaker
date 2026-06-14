@@ -6,11 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+- Add update-partials target
+- Add mdl to lint target
+
 ## 2.4.0 - 2026-05-22
 ### Added
 - Add Github token prefix input handling for update-dotfiles
-- Add update-partials target
-- Add mdl to lint target
 
 ## 2.3.1 - 2026-05-13
 ### Fixed
