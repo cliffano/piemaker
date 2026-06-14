@@ -44,14 +44,15 @@ The following targets are available:
 | clean | Remove all temporary (staged, generated, cached) files |
 | deps | Retrieve package dependencies using [Poetry](https://python-poetry.org/) |
 | deps-upgrade | Upgrade package dependencies using [Poetry](https://python-poetry.org/) |
-| deps-extra-apt | Install extra tools using `apt`: Python [VirtualEnv](https://virtualenv.pypa.io/) |
+| deps-extra-apt | Install extra tools using `apt`: Python [VirtualEnv](https://virtualenv.pypa.io/) and markdownlint |
 | rmdeps | Remove poetry.lock, requirements.txt, and .venv/ directory |
 | update-to-latest | Update Makefile to the latest version tag |
 | update-to-main | Update Makefile to the main branch |
 | update-to-version | Update Makefile to the version defined in `TARGET_PIEMAKER_VERSION` parameter |
 | update-dotfiles | Update the dotfiles with latest from [generator-python](https://github.com/cliffano/generator-python) |
+| update-partials | Update README partial snippets with latest from [generator-python](https://github.com/cliffano/generator-python) |
 | style | Run code styling against source and test code using [black](https://black.readthedocs.io/en/stable/) |
-| lint | Run lint checks against source and test code using [pylint](https://www.pylint.org/), then generate lint report using [pylint_report](https://pypi.org/project/pylint-report/) |
+| lint | Run lint checks against source and test code using [pylint](https://www.pylint.org/), generate lint report using [pylint_report](https://pypi.org/project/pylint-report/), then lint Markdown files using markdownlint |
 | complexity | Run complexity checks against source and test code using [Radon](https://radon.readthedocs.io/en/latest/), then generate complexity report |
 | test | Run unit testing using [pytest](https://pytest.org), then generate test report |
 | test-integration | Run integration testing using [pytest](https://pytest.org), then generate test report |
