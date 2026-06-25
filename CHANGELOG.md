@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+- Add pre and post hook targets support
+
 ## 2.5.0 - 2026-06-14
 ### Added
 - Add update-partials target
