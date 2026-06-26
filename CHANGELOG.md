@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+- Add deps_extra hook to automatically provision extra packages
+
+### Fixed
+- Fix missing sys path on Sphinx doc build
+
 ## 2.6.0 - 2026-06-25
 ### Added
 - Add pre and post hook targets support

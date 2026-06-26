@@ -8,12 +8,9 @@ PIEMAKER_VERSION = 2.6.1-pre.0
 
 ################################################################
 # User configuration variables
+# https://github.com/cliffano/piemaker#configuration
 # These variables should be stored in piemaker.yml config file,
 # and they will be parsed using yq https://github.com/mikefarah/yq
-# Example:
-# ---
-# package_name: somepackage
-# author: Some Author
 
 # PACKAGE_NAME is the name of the Python package
 PACKAGE_NAME=$(shell yq .package_name piemaker.yml)
@@ -40,6 +37,12 @@ define run_hook
 	fi
 endef
 
+define deps_extra
+	@if command -v apt-get > /dev/null 2>&1; then \
+		$(MAKE) deps-extra-apt; \
+	fi
+endef
+
 ################################################################
 # Base targets
 
@@ -62,6 +65,7 @@ deps:
 	python3 -m venv ${POETRY_HOME} && ${POETRY_HOME}/bin/pip install --force-reinstall poetry-plugin-up==0.9.0 --ignore-installed
 	$(call python_venv,poetry self add poetry-plugin-export)
 	$(call python_venv,poetry export -f requirements.txt --without-hashes --with dev --output requirements.txt)
+	$(call deps_extra)
 
 deps-upgrade:
 	$(call python_venv,poetry up --latest)
@@ -234,6 +238,7 @@ publish:
 doc: stage
 	rm -rf docs/doc/sphinx/ stage/doc/ && mkdir -p docs/doc/sphinx/ stage/doc/
 	$(call python_venv,sphinx-apidoc -o docs/doc/sphinx/ --full -H "$(PACKAGE_NAME)" -A "$(AUTHOR)" $(PACKAGE_NAME) && \
+		printf "\nimport os\nimport sys\nsys.path.insert(0, os.path.abspath('../../..'))\n" >> docs/doc/sphinx/conf.py && \
 		cd docs/doc/sphinx/ && \
 		make html && \
 		cp -R _build/html/* ../../../docs/doc/sphinx/)
