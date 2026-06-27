@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Fixed
+- Fix deps-extra install user flexibility
+
 ## 2.7.0 - 2026-06-27
 ### Added
 - Add deps_extra hook to automatically provision extra packages
