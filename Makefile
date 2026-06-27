@@ -3,13 +3,22 @@ COMPONENTS := python-lib
 MAKEFILE_NAME := Makefile-$(ID)
 TARGET_VERSION_VARIABLE := TARGET_$(shell echo $(ID) | tr '[:lower:]-' '[:upper:]_')_VERSION
 
+define deps_extra
+	@if command -v apt-get > /dev/null 2>&1; then \
+		$(MAKE) deps-extra-apt; \
+	fi
+endef
+
 all: ci
-ci: clean lint test
+ci: clean deps lint test
 
 clean:
 	for component in $(COMPONENTS); do \
 	  (cd examples/$$component/ && make -f ../../src/$(MAKEFILE_NAME) clean && cd ../../); \
 	done
+
+deps:
+	$(call deps_extra)
 
 deps-extra-apt:
 	apt-get install -y markdownlint
@@ -22,7 +31,7 @@ lint:
 test:
 	for component in $(COMPONENTS); do \
 	  (cd examples/$$component/ && \
-	    make -f ../../src/$(MAKEFILE_NAME) deps-extra-apt ci test-examples deps-upgrade update-to-main && \
+	    make -f ../../src/$(MAKEFILE_NAME) deps ci test-examples deps-upgrade update-to-main && \
 	    make -f ../../src/$(MAKEFILE_NAME) update-to-version $(TARGET_VERSION_VARIABLE)=1.0.0 &&\
 		make -f ../../src/$(MAKEFILE_NAME) update-to-latest update-dotfiles &&\
 		cd ../../); \
@@ -39,4 +48,4 @@ release-patch:
 
 release: release-minor
 
-.PHONY: all ci clean deps-extra-apt lint test release-major release-minor release-patch release
+.PHONY: all ci clean deps deps-extra-apt lint test release-major release-minor release-patch release
