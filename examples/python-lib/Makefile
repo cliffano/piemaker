@@ -4,7 +4,7 @@
 ################################################################
 
 # PieMaker's version number
-PIEMAKER_VERSION = 2.3.1
+PIEMAKER_VERSION = 2.6.0
 
 ################################################################
 # User configuration variables
@@ -32,6 +32,12 @@ export PATH := ${VIRTUAL_ENV}/bin:${POETRY_HOME}/bin:$(PATH)
 
 define python_venv
 	. .venv/bin/activate && $(1)
+endef
+
+define run_hook
+	@if [ -f Makefile-extras ] && grep -q "^$(1):" Makefile-extras; then \
+		$(MAKE) -f Makefile-extras $(1); \
+	fi
 endef
 
 ################################################################
@@ -64,6 +70,8 @@ deps-extra-apt:
 	apt-get update
 	apt-get install -y python3-venv
 	apt-get install -y python3-sphinx # needed by sphinx-apidoc
+	apt-get install -y markdownlint
+	$(call run_hook,x-post-deps-extra-apt)
 
 rmdeps:
 	rm -f poetry.lock requirements.txt
@@ -90,6 +98,7 @@ update-dotfiles: GENERATOR_INPUTS_AUTHOR_NAME = $(shell yq .generator.inputs.aut
 update-dotfiles: GENERATOR_INPUTS_AUTHOR_EMAIL = $(shell yq .generator.inputs.author_email piemaker.yml)
 update-dotfiles: GENERATOR_INPUTS_GITHUB_ID = $(shell yq .generator.inputs.github_id piemaker.yml)
 update-dotfiles: GENERATOR_INPUTS_GITHUB_REPO = $(shell yq .generator.inputs.github_repo piemaker.yml)
+update-dotfiles: GENERATOR_INPUTS_GITHUB_TOKEN_PREFIX = $(shell yq .generator.inputs.github_token_prefix piemaker.yml)
 update-dotfiles: stage
 	cd stage/ && \
 	  rm -rf generator-python/ && \
@@ -103,13 +112,48 @@ update-dotfiles: stage
 		--author_name "$(GENERATOR_INPUTS_AUTHOR_NAME)" \
 		--author_email "$(GENERATOR_INPUTS_AUTHOR_EMAIL)" \
 		--github_id "$(GENERATOR_INPUTS_GITHUB_ID)" \
-		--github_repo "$(GENERATOR_INPUTS_GITHUB_REPO)"
+		--github_repo "$(GENERATOR_INPUTS_GITHUB_REPO)" \
+		--github_token_prefix "$(GENERATOR_INPUTS_GITHUB_TOKEN_PREFIX)"
 	cd stage/generator-python/stage/$(GENERATOR_COMPONENT) && \
 	  cp -R .github/. ../../../../.github/ && \
 	  cp .coveragerc ../../../../.coveragerc && \
 	  cp .gitignore ../../../../.gitignore && \
 	  cp .pylintrc ../../../../.pylintrc && \
 	  cp .rtk.json ../../../../.rtk.json
+
+# Update partial snippets using the generator-python
+update-partials: GENERATOR_COMPONENT = $(shell yq .generator.component piemaker.yml)
+update-partials: GENERATOR_INPUTS_PROJECT_ID = $(shell yq .generator.inputs.project_id piemaker.yml)
+update-partials: GENERATOR_INPUTS_PROJECT_NAME = $(shell yq .generator.inputs.project_name piemaker.yml)
+update-partials: GENERATOR_INPUTS_PROJECT_DESC = $(shell yq .generator.inputs.project_desc piemaker.yml)
+update-partials: GENERATOR_INPUTS_AUTHOR_NAME = $(shell yq .generator.inputs.author_name piemaker.yml)
+update-partials: GENERATOR_INPUTS_AUTHOR_EMAIL = $(shell yq .generator.inputs.author_email piemaker.yml)
+update-partials: GENERATOR_INPUTS_GITHUB_ID = $(shell yq .generator.inputs.github_id piemaker.yml)
+update-partials: GENERATOR_INPUTS_GITHUB_REPO = $(shell yq .generator.inputs.github_repo piemaker.yml)
+update-partials: GENERATOR_INPUTS_GITHUB_TOKEN_PREFIX = $(shell yq .generator.inputs.github_token_prefix piemaker.yml)
+update-partials: stage
+	cd stage/ && \
+	  rm -rf generator-python/ && \
+	  git clone https://github.com/cliffano/generator-python && \
+	  cd generator-python && \
+	  make deps && \
+	  node_modules/.bin/plop $(GENERATOR_COMPONENT)-partials -- \
+	    --project_id "$(GENERATOR_INPUTS_PROJECT_ID)" \
+		--project_name "$(GENERATOR_INPUTS_PROJECT_NAME)" \
+		--project_desc "$(GENERATOR_INPUTS_PROJECT_DESC)" \
+		--author_name "$(GENERATOR_INPUTS_AUTHOR_NAME)" \
+		--author_email "$(GENERATOR_INPUTS_AUTHOR_EMAIL)" \
+		--github_id "$(GENERATOR_INPUTS_GITHUB_ID)" \
+		--github_repo "$(GENERATOR_INPUTS_GITHUB_REPO)" \
+		--github_token_prefix "$(GENERATOR_INPUTS_GITHUB_TOKEN_PREFIX)"
+	for block in AVATAR BADGES BUILD_REPORTS DEVELOPERS_GUIDE; do \
+	  partial_file=$$(printf "%s" "$$block" | tr "A-Z" "a-z"); \
+	  ex -s \
+	    -c "/<!-- BEGIN:$$block -->/+1,/<!-- END:$$block -->/-1d" \
+	    -c "/<!-- BEGIN:$$block -->/r stage/generator-python/stage/$(GENERATOR_COMPONENT)-partials/$$partial_file.txt" \
+	    -c 'wq' \
+	    README.md; \
+	done
 
 ################################################################
 # Formatting targets
@@ -125,6 +169,7 @@ lint: stage
 	$(call python_venv,pylint $(shell find $(PACKAGE_NAME) -type f -regex ".*\.py" | xargs echo) $(shell find tests/ -type f -regex ".*\.py" | xargs echo) $(shell find tests-integration/ -type f -regex ".*\.py" | xargs echo))
 	$(call python_venv,pylint $(shell find $(PACKAGE_NAME) -type f -regex ".*\.py" | xargs echo) $(shell find tests/ -type f -regex ".*\.py" | xargs echo) $(shell find tests-integration/ -type f -regex ".*\.py" | xargs echo) --output-format=pylint_report.CustomJsonReporter > docs/lint/pylint/report.json)
 	$(call python_venv,pylint_report docs/lint/pylint/report.json -o docs/lint/pylint/index.html)
+	mdl -r ~MD013,~MD029 $(shell find . -path ./stage -prune -o -path ./.venv -prune -o -path ./.pytest_cache -prune -o -name "CHANGELOG.md" -prune -o -name "*.md" -print)
 
 complexity: stage
 	rm -rf docs/complexity/radon/ stage/complexity/ && mkdir -p docs/complexity/radon/ stage/complexity/
@@ -195,4 +240,4 @@ doc: stage
 
 ################################################################
 
-.PHONY: all ci clean complexity configurations coverage deps deps-extra-apt deps-upgrade rmdeps doc export export export install lint name package package publish reinstall release-major release-minor release-patch stage style test test-examples test-integration uninstall update-dotfiles update-to-latest update-to-latest update-to-main update-to-version
+.PHONY: all ci clean complexity configurations coverage deps deps-extra-apt deps-upgrade rmdeps doc export export export install lint name package package publish reinstall release-major release-minor release-patch stage style test test-examples test-integration uninstall update-dotfiles update-partials update-to-latest update-to-latest update-to-main update-to-version
