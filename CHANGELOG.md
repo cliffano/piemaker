@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Add deps_extra hook to automatically provision extra packages
 
+### Changed
+- Extract common generator vars init to set_generator_vars
+
 ### Fixed
 - Fix missing sys path on Sphinx doc build
 

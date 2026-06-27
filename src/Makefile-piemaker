@@ -18,6 +18,18 @@ PACKAGE_NAME=$(shell yq .package_name piemaker.yml)
 # AUTHOR is the author of the Python package
 AUTHOR ?= $(shell yq .author piemaker.yml)
 
+define set_generator_vars
+$(1): GENERATOR_COMPONENT = $$(shell yq .generator.component piemaker.yml)
+$(1): GENERATOR_INPUTS_PROJECT_ID = $$(shell yq .generator.inputs.project_id piemaker.yml)
+$(1): GENERATOR_INPUTS_PROJECT_NAME = $$(shell yq .generator.inputs.project_name piemaker.yml)
+$(1): GENERATOR_INPUTS_PROJECT_DESC = $$(shell yq .generator.inputs.project_desc piemaker.yml)
+$(1): GENERATOR_INPUTS_AUTHOR_NAME = $$(shell yq .generator.inputs.author_name piemaker.yml)
+$(1): GENERATOR_INPUTS_AUTHOR_EMAIL = $$(shell yq .generator.inputs.author_email piemaker.yml)
+$(1): GENERATOR_INPUTS_GITHUB_ID = $$(shell yq .generator.inputs.github_id piemaker.yml)
+$(1): GENERATOR_INPUTS_GITHUB_REPO = $$(shell yq .generator.inputs.github_repo piemaker.yml)
+$(1): GENERATOR_INPUTS_GITHUB_TOKEN_PREFIX = $$(shell yq .generator.inputs.github_token_prefix piemaker.yml)
+endef
+
 $(info ################################################################)
 $(info Building Python package using PieMaker with user configurations...)
 $(info - Package name = ${PACKAGE_NAME})
@@ -94,15 +106,7 @@ update-to-version:
 	curl https://raw.githubusercontent.com/cliffano/piemaker/$(TARGET_PIEMAKER_VERSION)/src/Makefile-piemaker -o Makefile
 
 # Update dotfiles using the generator-python
-update-dotfiles: GENERATOR_COMPONENT = $(shell yq .generator.component piemaker.yml)
-update-dotfiles: GENERATOR_INPUTS_PROJECT_ID = $(shell yq .generator.inputs.project_id piemaker.yml)
-update-dotfiles: GENERATOR_INPUTS_PROJECT_NAME = $(shell yq .generator.inputs.project_name piemaker.yml)
-update-dotfiles: GENERATOR_INPUTS_PROJECT_DESC = $(shell yq .generator.inputs.project_desc piemaker.yml)
-update-dotfiles: GENERATOR_INPUTS_AUTHOR_NAME = $(shell yq .generator.inputs.author_name piemaker.yml)
-update-dotfiles: GENERATOR_INPUTS_AUTHOR_EMAIL = $(shell yq .generator.inputs.author_email piemaker.yml)
-update-dotfiles: GENERATOR_INPUTS_GITHUB_ID = $(shell yq .generator.inputs.github_id piemaker.yml)
-update-dotfiles: GENERATOR_INPUTS_GITHUB_REPO = $(shell yq .generator.inputs.github_repo piemaker.yml)
-update-dotfiles: GENERATOR_INPUTS_GITHUB_TOKEN_PREFIX = $(shell yq .generator.inputs.github_token_prefix piemaker.yml)
+$(eval $(call set_generator_vars,update-dotfiles))
 update-dotfiles: stage
 	cd stage/ && \
 	  rm -rf generator-python/ && \
@@ -126,15 +130,7 @@ update-dotfiles: stage
 	  cp .rtk.json ../../../../.rtk.json
 
 # Update partial snippets using the generator-python
-update-partials: GENERATOR_COMPONENT = $(shell yq .generator.component piemaker.yml)
-update-partials: GENERATOR_INPUTS_PROJECT_ID = $(shell yq .generator.inputs.project_id piemaker.yml)
-update-partials: GENERATOR_INPUTS_PROJECT_NAME = $(shell yq .generator.inputs.project_name piemaker.yml)
-update-partials: GENERATOR_INPUTS_PROJECT_DESC = $(shell yq .generator.inputs.project_desc piemaker.yml)
-update-partials: GENERATOR_INPUTS_AUTHOR_NAME = $(shell yq .generator.inputs.author_name piemaker.yml)
-update-partials: GENERATOR_INPUTS_AUTHOR_EMAIL = $(shell yq .generator.inputs.author_email piemaker.yml)
-update-partials: GENERATOR_INPUTS_GITHUB_ID = $(shell yq .generator.inputs.github_id piemaker.yml)
-update-partials: GENERATOR_INPUTS_GITHUB_REPO = $(shell yq .generator.inputs.github_repo piemaker.yml)
-update-partials: GENERATOR_INPUTS_GITHUB_TOKEN_PREFIX = $(shell yq .generator.inputs.github_token_prefix piemaker.yml)
+$(eval $(call set_generator_vars,update-partials))
 update-partials: stage
 	cd stage/ && \
 	  rm -rf generator-python/ && \
@@ -245,4 +241,4 @@ doc: stage
 
 ################################################################
 
-.PHONY: all ci clean complexity configurations coverage deps deps-extra-apt deps-upgrade rmdeps doc export export export install lint name package package publish reinstall release-major release-minor release-patch stage style test test-examples test-integration uninstall update-dotfiles update-partials update-to-latest update-to-latest update-to-main update-to-version
+.PHONY: $(1) all ci clean complexity configurations coverage deps deps-extra-apt deps-upgrade rmdeps doc export export export install lint name package package publish reinstall release-major release-minor release-patch stage style test test-examples test-integration uninstall update-dotfiles update-partials update-to-latest update-to-latest update-to-main update-to-version
