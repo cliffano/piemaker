@@ -74,6 +74,15 @@ The following targets are available:
 
 ## Colophon
 
+<!-- BEGIN:DEVELOPERS_GUIDE -->
+[Developer's Guide](https://cliffano.github.io/developers-guide-makefile.html)
+<!-- END:DEVELOPERS_GUIDE -->
+
+<!-- BEGIN:BUILD_REPORTS -->
+Build reports:
+
+<!-- END:BUILD_REPORTS -->
+
 Related Projects:
 
 * [generator-python](https://github.com/cliffano/generator-python) - Python projects generator using Plop
