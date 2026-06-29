@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Changed
+- Decouple deps target out of ci
+
 ## 2.7.1 - 2026-06-27
 ### Fixed
 - Fix deps-extra install user flexibility
