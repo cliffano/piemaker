@@ -14,7 +14,7 @@ define deps_extra
 endef
 
 all: ci
-ci: clean deps lint test
+ci: clean lint test
 
 clean:
 	for component in $(COMPONENTS); do \
