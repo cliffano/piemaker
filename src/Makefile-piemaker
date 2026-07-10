@@ -51,16 +51,16 @@ define deps_extra
 endef
 
 define set_generator_vars
-$(1): GENERATOR_COMPONENT = $$(shell yq .generator.component suntory.yml)
-$(1): GENERATOR_INPUTS_PROJECT_ID = $$(shell yq .generator.inputs.project_id suntory.yml)
-$(1): GENERATOR_INPUTS_PROJECT_NAME = $$(shell yq .generator.inputs.project_name suntory.yml)
-$(1): GENERATOR_INPUTS_PROJECT_DESC = $$(shell yq .generator.inputs.project_desc suntory.yml)
-$(1): GENERATOR_INPUTS_AUTHOR_NAME = $$(shell yq .generator.inputs.author_name suntory.yml)
-$(1): GENERATOR_INPUTS_AUTHOR_EMAIL = $$(shell yq .generator.inputs.author_email suntory.yml)
-$(1): GENERATOR_INPUTS_AUTHOR_URL = $$(shell yq .generator.inputs.author_url suntory.yml)
-$(1): GENERATOR_INPUTS_GITHUB_ID = $$(shell yq .generator.inputs.github_id suntory.yml)
-$(1): GENERATOR_INPUTS_GITHUB_REPO = $$(shell yq .generator.inputs.github_repo suntory.yml)
-$(1): GENERATOR_INPUTS_GITHUB_TOKEN_PREFIX = $$(shell yq .generator.inputs.github_token_prefix suntory.yml)
+$(1): GENERATOR_COMPONENT = $$(shell yq .generator.component $(2).yml)
+$(1): GENERATOR_INPUTS_PROJECT_ID = $$(shell yq .generator.inputs.project_id $(2).yml)
+$(1): GENERATOR_INPUTS_PROJECT_NAME = $$(shell yq .generator.inputs.project_name $(2).yml)
+$(1): GENERATOR_INPUTS_PROJECT_DESC = $$(shell yq .generator.inputs.project_desc $(2).yml)
+$(1): GENERATOR_INPUTS_AUTHOR_NAME = $$(shell yq .generator.inputs.author_name $(2).yml)
+$(1): GENERATOR_INPUTS_AUTHOR_EMAIL = $$(shell yq .generator.inputs.author_email $(2).yml)
+$(1): GENERATOR_INPUTS_AUTHOR_URL = $$(shell yq .generator.inputs.author_url $(2).yml)
+$(1): GENERATOR_INPUTS_GITHUB_ID = $$(shell yq .generator.inputs.github_id $(2).yml)
+$(1): GENERATOR_INPUTS_GITHUB_REPO = $$(shell yq .generator.inputs.github_repo $(2).yml)
+$(1): GENERATOR_INPUTS_GITHUB_TOKEN_PREFIX = $$(shell yq .generator.inputs.github_token_prefix $(2).yml)
 endef
 
 define update_dotfiles_from_generator
@@ -162,36 +162,14 @@ update-to-version:
 	curl https://raw.githubusercontent.com/cliffano/piemaker/$(TARGET_PIEMAKER_VERSION)/src/Makefile-piemaker -o Makefile
 
 # Update dotfiles using the generator-python
-$(eval $(call set_generator_vars,update-dotfiles))
+$(eval $(call set_generator_vars,update-dotfiles,piemaker))
 update-dotfiles: stage
 	$(call update_dotfiles_from_generator,python,.github/. .coveragerc .gitignore .pylintrc .rtk.json)
 
 # Update partial snippets using the generator-python
-$(eval $(call set_generator_vars,update-partials))
+$(eval $(call set_generator_vars,update-partials,piemaker))
 update-partials: stage
-	$(call update_partials_from_generator,node,AVATAR BADGES BUILD_REPORTS DEVELOPERS_GUIDE)
-	cd stage/ && \
-	  rm -rf generator-python/ && \
-	  git clone https://github.com/cliffano/generator-python && \
-	  cd generator-python && \
-	  make deps && \
-	  node_modules/.bin/plop $(GENERATOR_COMPONENT)-partials -- \
-	    --project_id "$(GENERATOR_INPUTS_PROJECT_ID)" \
-		--project_name "$(GENERATOR_INPUTS_PROJECT_NAME)" \
-		--project_desc "$(GENERATOR_INPUTS_PROJECT_DESC)" \
-		--author_name "$(GENERATOR_INPUTS_AUTHOR_NAME)" \
-		--author_email "$(GENERATOR_INPUTS_AUTHOR_EMAIL)" \
-		--github_id "$(GENERATOR_INPUTS_GITHUB_ID)" \
-		--github_repo "$(GENERATOR_INPUTS_GITHUB_REPO)" \
-		--github_token_prefix "$(GENERATOR_INPUTS_GITHUB_TOKEN_PREFIX)"
-	for block in AVATAR BADGES BUILD_REPORTS DEVELOPERS_GUIDE; do \
-	  partial_file=$$(printf "%s" "$$block" | tr "A-Z" "a-z"); \
-	  ex -s \
-	    -c "/<!-- BEGIN:$$block -->/+1,/<!-- END:$$block -->/-1d" \
-	    -c "/<!-- BEGIN:$$block -->/r stage/generator-python/stage/$(GENERATOR_COMPONENT)-partials/$$partial_file.txt" \
-	    -c 'wq' \
-	    README.md; \
-	doned
+	$(call update_partials_from_generator,python,AVATAR BADGES BUILD_REPORTS DEVELOPERS_GUIDE)
 
 ################################################################
 # Formatting targets
