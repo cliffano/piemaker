@@ -3,6 +3,9 @@ COMPONENTS := python-lib
 MAKEFILE_NAME := Makefile-$(ID)
 TARGET_VERSION_VARIABLE := TARGET_$(shell echo $(ID) | tr '[:lower:]-' '[:upper:]_')_VERSION
 
+################################################################
+# MAKE IT SO - Makefile Makefile
+
 define deps_extra
 	@if command -v apt-get > /dev/null 2>&1; then \
 		if [ "$$(id -u)" = "0" ]; then \
