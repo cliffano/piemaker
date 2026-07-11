@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 
 ### Changed
-- Extract common utility function
+- Extract common utility functions
 
 ## 2.8.0 - 2026-07-03
 ### Changed

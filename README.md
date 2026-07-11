@@ -34,6 +34,7 @@ Create PieMaker configuration file called `piemaker.yml` with contains the follo
 | generator.inputs.project_desc | The project description | `A sample Python CLI package` |
 | generator.inputs.author_name | The author's name | `Some Author` |
 | generator.inputs.author_email | The author's email address | `someauthor@example.com` |
+| generator.inputs.author_url | The author's web site URL | `https://example.com` |
 | generator.inputs.github_id | The GitHub user or organisation ID | `pakkunbot` |
 | generator.inputs.github_repo | The GitHub repository name | `piemakerexample` |
 
