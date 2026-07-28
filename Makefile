@@ -40,7 +40,7 @@ test:
 	  (cd examples/$$component/ && \
 	    make -f ../../src/$(MAKEFILE_NAME) deps ci test-examples deps-upgrade update-to-main && \
 	    make -f ../../src/$(MAKEFILE_NAME) update-to-version $(TARGET_VERSION_VARIABLE)=1.0.0 &&\
-		make -f ../../src/$(MAKEFILE_NAME) update-to-latest update-dotfiles &&\
+		make -f ../../src/$(MAKEFILE_NAME) update-to-latest update-dotfiles update-partials &&\
 		cd ../../); \
 	done
 
