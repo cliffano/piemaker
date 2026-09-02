@@ -6,11 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Changed
+- Shift reports generation from docs/ to stage/gh-pages/
+
 ## 2.10.0 - 2026-07-28
 ### Changed
 - Replace Copilot Instructions with AGENTS.md
 - Restructure Makefile to use MAKEITSO standard
-- Shift reports generation from docs/ to stage/gh-pages/
 
 ## 2.9.0 - 2026-07-11
 ### Changed
