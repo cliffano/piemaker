@@ -45,7 +45,7 @@ ci: clean style lint test coverage complexity doc package reinstall test-integra
 
 # Ensure stage directory exists
 stage:
-	mkdir -p stage
+	mkdir -p stage/ stage/gh-pages/
 
 # Remove all temporary (staged, generated, cached) files
 clean:
