@@ -124,7 +124,7 @@ coverage:
 package:
 	$(call python_venv,poetry build)
 
-install: package
+install:
 	$(call python_venv,poetry install)
 
 uninstall:

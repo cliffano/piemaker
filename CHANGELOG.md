@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Shift reports generation from docs/ to stage/gh-pages/
+- Decouple package and install targets to allow execution on separate environments
 
 ## 2.10.0 - 2026-07-28
 ### Changed
