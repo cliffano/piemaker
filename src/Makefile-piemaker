@@ -144,7 +144,7 @@ doc: stage
 		printf "\nimport os\nimport sys\nsys.path.insert(0, os.path.abspath('../../..'))\n" >> stage/gh-pages/doc/sphinx/conf.py && \
 		cd stage/gh-pages/doc/sphinx/ && \
 		make html && \
-		cp -R _build/html/* ../../../stage/gh-pages/doc/sphinx/)
+		cp -R _build/html/* .)
 
 ################################################################
 # MAKE IT SO - Utility Makefile functions and targets
