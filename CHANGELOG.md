@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Changed
+- Support Pypi trusted publishing when password is not set
+
 ## 2.11.1 - 2026-09-08
 ### Fixed
 - Fix Sphinx doc generation path
