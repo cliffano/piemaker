@@ -1,7 +1,7 @@
 # pylint: disable=too-many-locals
 """
 piemakerexample
-&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+===============
 ... .
 """
 import click

@@ -1,7 +1,7 @@
 # pylint: disable=too-many-locals,too-few-public-methods
 """
 piemakerlibexample
-&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+==================
 ... .
 """
 from .config import load
