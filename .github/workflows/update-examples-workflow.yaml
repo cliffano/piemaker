@@ -1,5 +1,5 @@
 ---
-name: Generate Examples
+name: Update Examples
 on: [workflow_dispatch]
 jobs:
   build:
@@ -11,12 +11,8 @@ jobs:
       - uses: cliffano/command-docker-action@v2.0.0
         with:
           image: cliffano/studio:3.2.0
-          command: 'make gen-examples'
-      - uses: cliffano/command-docker-action@v2.0.0
-        with:
-          image: cliffano/studio:3.2.0
-          command: 'make ci'
+          command: 'make deps update-examples'
       - uses: cliffano/save-changes-action@v1.0.0
         with:
-          message: "Generate example components to latest"
+          message: "Update example components using latest generator"
           github_token: ${{ secrets.STUDIO_GITHUB_TOKEN }}

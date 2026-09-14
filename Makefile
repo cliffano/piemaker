@@ -30,7 +30,7 @@ deps:
 deps-extra-apt:
 	apt-get install -y markdownlint
 
-gen-examples:
+update-examples:
 	for component in $(COMPONENTS); do \
 	  (cd examples/$$component/ && \
 	    make -f ../../src/$(MAKEFILE_NAME) deps update-to-latest update-dotfiles update-partials &&\
