@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Changed
+- Parameterise UPDATE_GH_ID
+
 ## 2.12.0 - 2026-09-10
 ### Changed
 - Support Pypi trusted publishing when password is not set
