@@ -4,6 +4,9 @@ name: Publish
   push:
     tags:
       - '*'
+permissions:
+  contents: read
+  id-token: write
 jobs:
   build:
     runs-on: ubuntu-24.04
@@ -15,4 +18,4 @@ jobs:
         with:
           python-version: '3.14'
       - run: make clean deps package install
-      - run: make publish PASSWORD=${{ secrets.null_PYPI_TOKEN }}
+      - run: make publish PASSWORD=${{ secrets.STUDIO_PYPI_TOKEN }}
