@@ -5,7 +5,7 @@
 <!-- BEGIN:BADGES -->
 [![Build Status](https://github.com/cliffano/piemakerlibexample/workflows/CI/badge.svg)](https://github.com/cliffano/piemakerlibexample/actions?query=workflow%3ACI)
 [![Code Scanning Status](https://github.com/cliffano/piemakerlibexample/workflows/CodeQL/badge.svg)](https://github.com/cliffano/piemakerlibexample/actions?query=workflow%3ACodeQL)
-[![Dependencies Status](https://img.shields.io/librariesio/release/pypi/piemakerlibexample)](https://libraries.io/github/cliffano/piemakerlibexample)
+[![Dependencies Status](https://img.shields.io/librariesio/release/pypi/piemakerlibexample)](https://libraries.io/npm/piemakerlibexample)
 [![Security Status](https://snyk.io/test/github/cliffano/piemakerlibexample/badge.svg)](https://snyk.io/test/github/cliffano/piemakerlibexample)
 [![Published Version](https://img.shields.io/pypi/v/piemakerlibexample.svg)](https://pypi.python.org/pypi/piemakerlibexample)
 <!-- END:BADGES -->
