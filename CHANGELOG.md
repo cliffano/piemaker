@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Fixed
+- Fix publishing access denied by switching to twine
+
 ## 2.13.0 - 2026-09-14
 ### Added
 - Add update-examples capability.
