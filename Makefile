@@ -62,4 +62,4 @@ release-patch:
 
 release: release-minor
 
-.PHONY: all ci clean deps deps-extra-apt gen-examples lint test release-major release-minor release-patch release
+.PHONY: all ci clean deps deps-extra-apt update-examples lint test release-major release-minor release-patch release

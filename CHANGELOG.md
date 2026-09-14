@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 
 ### Added
-- Add gen-examples capability.
+- Add update-examples capability.
 
 ### Changed
 - Parameterise UPDATE_GH_ID
