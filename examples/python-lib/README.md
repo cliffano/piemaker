@@ -1,9 +1,13 @@
 <!-- BEGIN:AVATAR -->
-To be populated by generator-python python-lib-partials
+![Avatar](avatar.jpg)
 <!-- END:AVATAR -->
 
 <!-- BEGIN:BADGES -->
-To be populated by generator-python python-lib-partials
+[![Build Status](https://github.com/cliffano/piemakerlibexample/workflows/CI/badge.svg)](https://github.com/cliffano/piemakerlibexample/actions?query=workflow%3ACI)
+[![Code Scanning Status](https://github.com/cliffano/piemakerlibexample/workflows/CodeQL/badge.svg)](https://github.com/cliffano/piemakerlibexample/actions?query=workflow%3ACodeQL)
+[![Dependencies Status](https://img.shields.io/librariesio/release/pypi/piemakerlibexample)](https://libraries.io/github/cliffano/piemakerlibexample)
+[![Security Status](https://snyk.io/test/github/cliffano/piemakerlibexample/badge.svg)](https://snyk.io/test/github/cliffano/piemakerlibexample)
+[![Published Version](https://img.shields.io/pypi/v/piemakerlibexample.svg)](https://pypi.python.org/pypi/piemakerlibexample)
 <!-- END:BADGES -->
 
 # PiemakerLibExample
@@ -47,9 +51,17 @@ Some example configuration files are available on [examples](examples) folder.
 ## Colophon
 
 <!-- BEGIN:DEVELOPERS_GUIDE -->
-To be populated by generator-python python-lib-partials
+[Developer's Guide](https://cliffano.github.io/developers-guide-python.html)
 <!-- END:DEVELOPERS_GUIDE -->
 
 <!-- BEGIN:BUILD_REPORTS -->
-To be populated by generator-python python-lib-partials
+Build reports:
+
+* [Lint report](https://cliffano.github.io/piemakerlibexample/lint/pylint/index.html)
+* [Code complexity report](https://cliffano.github.io/piemakerlibexample/complexity/radon/index.html)
+* [Unit tests report](https://cliffano.github.io/piemakerlibexample/test/pytest/index.html)
+* [Test coverage report](https://cliffano.github.io/piemakerlibexample/coverage/coverage/index.html)
+* [Integration tests report](https://cliffano.github.io/piemakerlibexample/test-integration/pytest/index.html)
+* [API Documentation](https://cliffano.github.io/piemakerlibexample/doc/sphinx/index.html)
+
 <!-- END:BUILD_REPORTS -->

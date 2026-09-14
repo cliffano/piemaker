@@ -1,9 +1,13 @@
 <!-- BEGIN:AVATAR -->
-To be populated by generator-python python-cli-partials
+![Avatar](avatar.jpg)
 <!-- END:AVATAR -->
 
 <!-- BEGIN:BADGES -->
-To be populated by generator-python python-cli-partials
+[![Build Status](https://github.com/cliffano/piemakerexample/workflows/CI/badge.svg)](https://github.com/cliffano/piemakerexample/actions?query=workflow%3ACI)
+[![Code Scanning Status](https://github.com/cliffano/piemakerexample/workflows/CodeQL/badge.svg)](https://github.com/cliffano/piemakerexample/actions?query=workflow%3ACodeQL)
+[![Dependencies Status](https://img.shields.io/librariesio/release/pypi/piemakerexample)](https://libraries.io/github/cliffano/piemakerexample)
+[![Security Status](https://snyk.io/test/github/cliffano/piemakerexample/badge.svg)](https://snyk.io/test/github/cliffano/piemakerexample)
+[![Published Version](https://img.shields.io/pypi/v/piemakerexample.svg)](https://pypi.python.org/pypi/piemakerexample)
 <!-- END:BADGES -->
 
 # PiemakerExample
@@ -55,9 +59,17 @@ Some example configuration files are available on [examples](examples) folder.
 ## Colophon
 
 <!-- BEGIN:DEVELOPERS_GUIDE -->
-To be populated by generator-python python-cli-partials
+[Developer's Guide](https://cliffano.github.io/developers-guide-python.html)
 <!-- END:DEVELOPERS_GUIDE -->
 
 <!-- BEGIN:BUILD_REPORTS -->
-To be populated by generator-python python-cli-partials
+Build reports:
+
+* [Lint report](https://cliffano.github.io/piemakerexample/lint/pylint/index.html)
+* [Code complexity report](https://cliffano.github.io/piemakerexample/complexity/radon/index.html)
+* [Unit tests report](https://cliffano.github.io/piemakerexample/test/pytest/index.html)
+* [Test coverage report](https://cliffano.github.io/piemakerexample/coverage/coverage/index.html)
+* [Integration tests report](https://cliffano.github.io/piemakerexample/test-integration/pytest/index.html)
+* [API Documentation](https://cliffano.github.io/piemakerexample/doc/sphinx/index.html)
+
 <!-- END:BUILD_REPORTS -->
