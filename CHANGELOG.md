@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Upgrade Ubuntu to 26.04
 - Upgrade cliffano/studio to 4.0.0
+- Bump up supported Python version to 3.12
 
 ### Fixed
 - Fix unsafe YAML load in examples code

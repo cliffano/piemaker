@@ -29,7 +29,7 @@ include = "piemakerexample"
 piemakerexample = "piemakerexample:cli"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.12"
 click = "~8.3.1"
 conflog = "~2.1.0"
 PyYAML = "~6.0.2"
