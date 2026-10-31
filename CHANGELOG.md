@@ -7,12 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 
 ### Added
-- Add bandit check to lint target
+- Add Bandit check to lint target
+- Add Bandit config to dotfiles list
 
 ### Changed
 - Upgrade Ubuntu to 26.04
 - Upgrade cliffano/studio to 4.0.0
-- Bump up supported Python version to 3.12
+- Bump up minimum supported Python version to 3.12
+
+### Removed
+- Remove support for Python 3.10
 
 ### Fixed
 - Fix unsafe YAML load in examples code
