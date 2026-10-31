@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Upgrade Ubuntu to 26.04
 - Upgrade cliffano/studio to 4.0.0
 
+### Fixed
+- Fix unsafe YAML load in examples code
+
 ## 2.13.1 - 2026-09-14
 ### Fixed
 - Fix publishing access denied by switching to twine

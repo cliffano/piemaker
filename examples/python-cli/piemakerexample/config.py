@@ -12,6 +12,6 @@ def load(conf_file: str) -> dict:
 
     conf = {}
     with open(conf_file, 'r', encoding='utf-8') as stream:
-        conf = yaml.load(stream, Loader=yaml.FullLoader)
+        conf = yaml.safe_load(stream)
 
     return conf
