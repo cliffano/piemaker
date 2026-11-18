@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add Poetry requests timeout setting of 600
 - Add CodeQL analysis workflow
 
+### Changed
+- Upgrade Release Action to 2.2.0
+
 ## 3.0.0 - 2026-10-31
 ### Added
 - Add Bandit check to lint target
