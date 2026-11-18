@@ -33,7 +33,7 @@ deps-extra-apt:
 update-examples:
 	for component in $(COMPONENTS); do \
 	  (cd examples/$$component/ && \
-	    make -f ../../src/$(MAKEFILE_NAME) deps update-to-latest update-dotfiles update-partials &&\
+	    make -f ../../src/$(MAKEFILE_NAME) clean deps update-to-latest update-dotfiles update-partials &&\
 		cd ../../); \
 	done
 

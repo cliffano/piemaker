@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Upgrade Release Action to 2.2.0
 
+### Fixed
+- Fix update-examples failing to update Poetry lock
+
 ## 3.0.0 - 2026-10-31
 ### Added
 - Add Bandit check to lint target
