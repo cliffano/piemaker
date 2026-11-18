@@ -4,6 +4,7 @@
 
 <!-- BEGIN:BADGES -->
 [![Build Status](https://github.com/cliffano/piemaker/actions/workflows/ci-workflow.yaml/badge.svg)](https://github.com/cliffano/piemaker/actions/workflows/ci-workflow.yaml)
+[![Code Scanning Status](https://github.com/cliffano/piemaker/workflows/CodeQL/badge.svg)](https://github.com/cliffano/piemaker/actions?query=workflow%3ACodeQL)
 <!-- END:BADGES -->
 
 # PieMaker
