@@ -7,7 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 
 ### Added
-- Add poetry requests timeout setting of 600
+- Add Poetry requests timeout setting of 600
+- Add CodeQL analysis workflow
 
 ## 3.0.0 - 2026-10-31
 ### Added
