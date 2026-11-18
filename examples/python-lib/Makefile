@@ -4,12 +4,12 @@
 ################################################################
 
 # PieMaker info
-PIEMAKER_VERSION = 2.13.1
+PIEMAKER_VERSION = 3.0.0
 
 UPDATE_GH_ID = cliffano
 UPDATE_MAKEFILE = piemaker
 UPDATE_GENERATOR = python
-UPDATE_DOTFILES = .github/. .coveragerc .gitignore .pylintrc .rtk.json AGENTS.md
+UPDATE_DOTFILES = .github/. .bandit.yml .coveragerc .gitignore .pylintrc .rtk.json AGENTS.md
 UPDATE_PARTIALS = AVATAR BADGES BUILD_REPORTS DEVELOPERS_GUIDE
 
 ################################################################
@@ -89,6 +89,7 @@ lint: stage
 	$(call python_venv,pylint $(shell find $(PACKAGE_NAME) -type f -regex ".*\.py" | xargs echo) $(shell find tests/ -type f -regex ".*\.py" | xargs echo) $(shell find tests-integration/ -type f -regex ".*\.py" | xargs echo))
 	$(call python_venv,pylint $(shell find $(PACKAGE_NAME) -type f -regex ".*\.py" | xargs echo) $(shell find tests/ -type f -regex ".*\.py" | xargs echo) $(shell find tests-integration/ -type f -regex ".*\.py" | xargs echo) --output-format=pylint_report.CustomJsonReporter > stage/gh-pages/lint/pylint/report.json)
 	$(call python_venv,pylint_report stage/gh-pages/lint/pylint/report.json -o stage/gh-pages/lint/pylint/index.html)
+	$(call python_venv,bandit -c .bandit.yml -r $(PACKAGE_NAME) tests tests-integration)
 	mdl -r ~MD013,~MD029 $(shell find . -path ./stage -prune -o -path ./.venv -prune -o -path ./.pytest_cache -prune -o -name "CHANGELOG.md" -prune -o -name "*.md" -print)
 
 complexity: stage
